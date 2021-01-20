@@ -1,0 +1,15 @@
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\bin\Debug\FeedbackSystem.exe.config
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\bin\Debug\FeedbackSystem.exe
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\bin\Debug\FeedbackSystem.pdb
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.Properties.Resources.resources
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.csproj.GenerateResource.cache
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.csproj.CoreCompileInputs.cache
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.exe
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.pdb
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.AdminLogin.resources
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.GuestForm.resources
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.Home.resources
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.Admin.resources
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.UserControlExcel.resources
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.UserControlChart.resources
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.UserControlCriteria.resources
