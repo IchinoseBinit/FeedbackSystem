@@ -17,7 +17,8 @@ namespace FeedbackSystem
         public GuestForm()
         {
             InitializeComponent();
-            showCriterias();
+            ShowCriterias();
+            ratings = new string[comboList.Count];
         }
         private List<Rating> myList = new List<Rating>();
         private string customerName;
@@ -29,6 +30,8 @@ namespace FeedbackSystem
         private string cleanliness;
         private string orderAccuracy;
         private string valueForMoney;
+        private List<ComboBox> comboList = new List<ComboBox>();
+        private string[] ratings;
 
 
         private void ErrorDialog()
@@ -43,7 +46,21 @@ namespace FeedbackSystem
             customerName = txtName.Text;
             phoneNumber = txtPhone.Text;
             emailAddress = txtEmail.Text;
-            if (customerName == "" && phoneNumber == "" && emailAddress == "")
+            foreach (ComboBox cmboBox in comboList)
+            {
+                if(cmboBox.Text == "Select a rating")
+                {
+                    MessageBox.Show("Please Give a Rating for "+cmboBox.Name, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cmboBox.Focus();
+                    return false;
+                }
+                else
+                {
+                    string control = ((KeyValuePair<string, int>)cmboBox.SelectedItem).Value.ToString();
+                    ratings.Append(control);                
+                }
+            }
+            /*if (customerName == "" && phoneNumber == "" && emailAddress == "")
             {
                 MessageBox.Show("Please Enter Name, Phone and Email", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtName.Focus();
@@ -66,7 +83,7 @@ namespace FeedbackSystem
                 MessageBox.Show("Please Enter Your Email Address", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEmail.Focus();
                 return false;
-            }
+            }*/
             return true;
         }
 
@@ -93,7 +110,7 @@ namespace FeedbackSystem
         }
 
 
-        private void showCriterias()
+        private void ShowCriterias()
         {
             List<string[]> rows = Utility.GetFiles();
             string[] criteriaNames = rows[0];
@@ -101,7 +118,18 @@ namespace FeedbackSystem
             int tabIndex = 6;
             int lblHeight = 207;
             int cmboHeight = 202;
-            for(int i=3; i<criteriaNames.Length; i++)
+
+            
+            Dictionary<string, int> pointsDictionary = new Dictionary<string, int>();
+            pointsDictionary.Add("Select a rating", 0);
+            pointsDictionary.Add("Bad", 1);
+            pointsDictionary.Add("Satisfactory", 2);
+            pointsDictionary.Add("Good", 3);
+            pointsDictionary.Add("Excellent", 4);
+            pointsDictionary.Add("Outstanding", 5);
+            
+
+            for (int i=3; i<criteriaNames.Length; i++)
             {
                 Label obj = new Label();
                 obj.AutoSize = true;
@@ -118,10 +146,14 @@ namespace FeedbackSystem
                 ComboBox newCombo = new ComboBox();
                 newCombo.FormattingEnabled = true;
                 newCombo.Location = new System.Drawing.Point(263, cmboHeight);
-                newCombo.Name = "cmbo"+ criteriaNames[i];
+                newCombo.Name = criteriaNames[i];
                 newCombo.Size = new System.Drawing.Size(160, 24);
                 newCombo.TabIndex = tabIndex;
+                newCombo.DataSource = new BindingSource(pointsDictionary, null);
+                newCombo.ValueMember = "Value";
+                newCombo.DisplayMember = "Key";
                 Controls.Add(newCombo);
+                comboList.Add(newCombo);
                 cmboHeight = cmboHeight + 40;
                 tabIndex++;
             }
@@ -148,137 +180,165 @@ namespace FeedbackSystem
 
         }
 
-
-       /* private void btnNextFoodQuality_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            if (CheckInformation()) { 
-                foodQuality = comboFoodQuality.Text;
-                if (foodQuality != "")
-                {
-                    guestTab.SelectTab("tabPageStaffFriendliness");
-                }
-                else
-                {
-                    ErrorDialog();
-                    comboFoodQuality.Focus();
-                }
-            }
-        }   
-
-        private void btnNextStaff_Click(object sender, EventArgs e)
-        {
-            if (CheckInformation())
-            {
-                staffFriendliness = comboStaffFriendliness.Text;
-                if (staffFriendliness != "")
-                {
-                    guestTab.SelectTab("tabPageCleanliness");
-                }
-                else
-                {
-                    ErrorDialog();
-                    comboStaffFriendliness.Focus();
-                }
-            }
-        }
-
-        private void btnNextCleanliness_Click(object sender, EventArgs e)
-        {
-            if (CheckInformation())
-            {
-                cleanliness = comboCleanliness.Text;
-                if (cleanliness != "")
-                {
-                    guestTab.SelectTab("tabPageOrderAccuracy");
-                }
-                else
-                {
-                    ErrorDialog();
-                    comboCleanliness.Focus();
-                }
-            }
-        }
-
-        private void btnNextOrderAccuracy_Click(object sender, EventArgs e)
-        {
-            if (CheckInformation())
-            {
-                orderAccuracy = comboOrderAccuracy.Text;
-                if (orderAccuracy != "")
-                {
-                    guestTab.SelectTab("tabPageAmbiance");
-                }
-                else
-                {
-                    ErrorDialog();
-                    comboOrderAccuracy.Focus();
-                }
-            }
-        }
-
-        private void btnNextAmbiance_Click(object sender, EventArgs e)
-        {
-            if (CheckInformation())
-            {
-                ambiance = comboAmbiance.Text;
-                if (ambiance != "")
-                {
-                    guestTab.SelectTab("tabPageValue");
-                }
-                else
-                {
-                    ErrorDialog();
-                    comboAmbiance.Focus();
-                }
-            }
+            (new AdminLogin()).Show();
+            this.Hide();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (CheckInformation())
             {
-                valueForMoney = comboValueForMoney.Text;
-                if (valueForMoney != "")
-                {
-                    myList.Add(new Rating(customerName, phoneNumber, emailAddress, foodQuality, staffFriendliness, cleanliness, orderAccuracy, ambiance, valueForMoney));
-                    string details = customerName + "," + phoneNumber + "," + emailAddress + "," + foodQuality + "," + staffFriendliness + "," + cleanliness + "," + orderAccuracy + "," + ambiance + "," + valueForMoney + "\n";
-                    WriteToFile(details);
-                    Clear();
-                    DialogResult suc = MessageBox.Show("Thanks for giving the Feedback \nYour response has been recorded", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    ErrorDialog();
-                    comboValueForMoney.Focus();
-                }
+                Rating obj = new Rating(customerName, phoneNumber, emailAddress, ratings, DateTime.Now.ToString());
+                Utility.WriteToFile(Application.StartupPath, CreateArray(obj));
+                MessageBox.Show("Thanks for giving the Feedback \nYour response has been recorded", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            // Write code to submit and save in csv
         }
 
-        private void btnBackStaff_Click(object sender, EventArgs e)
+        private string[] CreateArray(Rating obj)
         {
-            guestTab.SelectTab("tabPageFoodQuality");
+            string[] newArray = new string[comboList.Count+3];
+            newArray.Append(obj.CustomerName);
+            newArray.Append(obj.PhoneNumber);
+            newArray.Append(obj.EmailAddress);
+            foreach (string s in obj.Ratings)
+            {
+                newArray.Append(s);
+            }
+            return newArray;
         }
 
+        /* private void btnNextFoodQuality_Click(object sender, EventArgs e)
+         {
+             if (CheckInformation()) { 
+                 foodQuality = comboFoodQuality.Text;
+                 if (foodQuality != "")
+                 {
+                     guestTab.SelectTab("tabPageStaffFriendliness");
+                 }
+                 else
+                 {
+                     ErrorDialog();
+                     comboFoodQuality.Focus();
+                 }
+             }
+         }   
 
-        private void btnBackOrderAccuracy_Click(object sender, EventArgs e)
-        {
-            guestTab.SelectTab("tabPageCleanliness");
-        }
+         private void btnNextStaff_Click(object sender, EventArgs e)
+         {
+             if (CheckInformation())
+             {
+                 staffFriendliness = comboStaffFriendliness.Text;
+                 if (staffFriendliness != "")
+                 {
+                     guestTab.SelectTab("tabPageCleanliness");
+                 }
+                 else
+                 {
+                     ErrorDialog();
+                     comboStaffFriendliness.Focus();
+                 }
+             }
+         }
 
-        private void btnBackAmbiance_Click(object sender, EventArgs e)
-        {
-            guestTab.SelectTab("tabPageOrderAccuracy");
-        }
+         private void btnNextCleanliness_Click(object sender, EventArgs e)
+         {
+             if (CheckInformation())
+             {
+                 cleanliness = comboCleanliness.Text;
+                 if (cleanliness != "")
+                 {
+                     guestTab.SelectTab("tabPageOrderAccuracy");
+                 }
+                 else
+                 {
+                     ErrorDialog();
+                     comboCleanliness.Focus();
+                 }
+             }
+         }
 
-        private void btnBackValueForMoney_Click(object sender, EventArgs e)
-        {
-            guestTab.SelectTab("tabPageAmbiance");
-        }
+         private void btnNextOrderAccuracy_Click(object sender, EventArgs e)
+         {
+             if (CheckInformation())
+             {
+                 orderAccuracy = comboOrderAccuracy.Text;
+                 if (orderAccuracy != "")
+                 {
+                     guestTab.SelectTab("tabPageAmbiance");
+                 }
+                 else
+                 {
+                     ErrorDialog();
+                     comboOrderAccuracy.Focus();
+                 }
+             }
+         }
 
-        private void btnBackCleanliness_Click(object sender, EventArgs e)
-        {
-            guestTab.SelectTab("tabPageStaffFriendliness");
-        }*/
+         private void btnNextAmbiance_Click(object sender, EventArgs e)
+         {
+             if (CheckInformation())
+             {
+                 ambiance = comboAmbiance.Text;
+                 if (ambiance != "")
+                 {
+                     guestTab.SelectTab("tabPageValue");
+                 }
+                 else
+                 {
+                     ErrorDialog();
+                     comboAmbiance.Focus();
+                 }
+             }
+         }
+
+         private void btnSubmit_Click(object sender, EventArgs e)
+         {
+             if (CheckInformation())
+             {
+                 valueForMoney = comboValueForMoney.Text;
+                 if (valueForMoney != "")
+                 {
+                     myList.Add(new Rating(customerName, phoneNumber, emailAddress, foodQuality, staffFriendliness, cleanliness, orderAccuracy, ambiance, valueForMoney));
+                     string details = customerName + "," + phoneNumber + "," + emailAddress + "," + foodQuality + "," + staffFriendliness + "," + cleanliness + "," + orderAccuracy + "," + ambiance + "," + valueForMoney + "\n";
+                     WriteToFile(details);
+                     Clear();
+                     DialogResult suc = MessageBox.Show("Thanks for giving the Feedback \nYour response has been recorded", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 }
+                 else
+                 {
+                     ErrorDialog();
+                     comboValueForMoney.Focus();
+                 }
+             }
+             // Write code to submit and save in csv
+         }
+
+         private void btnBackStaff_Click(object sender, EventArgs e)
+         {
+             guestTab.SelectTab("tabPageFoodQuality");
+         }
+
+
+         private void btnBackOrderAccuracy_Click(object sender, EventArgs e)
+         {
+             guestTab.SelectTab("tabPageCleanliness");
+         }
+
+         private void btnBackAmbiance_Click(object sender, EventArgs e)
+         {
+             guestTab.SelectTab("tabPageOrderAccuracy");
+         }
+
+         private void btnBackValueForMoney_Click(object sender, EventArgs e)
+         {
+             guestTab.SelectTab("tabPageAmbiance");
+         }
+
+         private void btnBackCleanliness_Click(object sender, EventArgs e)
+         {
+             guestTab.SelectTab("tabPageStaffFriendliness");
+         }*/
     }
 }

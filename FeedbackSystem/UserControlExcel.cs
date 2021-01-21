@@ -14,6 +14,7 @@ namespace FeedbackSystem
 {
     public partial class UserControlExcel : UserControl
     {
+        private List<Rating> myList = new List<Rating>();
         public UserControlExcel()
         {
             InitializeComponent();
@@ -63,7 +64,34 @@ namespace FeedbackSystem
                         }
                         else
                         {
-                            feedbackGridView.Rows[index].Cells[j].Value = rows[i][j];
+                            string customerName = "";
+                            string phoneNumber = "";
+                            string emailAddress = "";
+                            string[] ratings = new string[feedbackGridView.Columns.Count];
+                            string savedDate = "";
+                            if (j == 0)
+                            {
+                                customerName = rows[i][j];
+                            }
+                            else if (j == 1)
+                            {
+                                phoneNumber = rows[i][j];
+                            }
+                            else if (j == 2)
+                            {
+                                emailAddress = rows[i][j];
+                            }
+                            else if (j > 2 && j < feedbackGridView.Columns.Count-1)
+                            {
+                                ratings.Append(rows[i][j]);
+                            }
+                            else
+                            {
+                                savedDate = rows[i][j];
+                            }
+                            myList.Add(new Rating(customerName, phoneNumber, emailAddress, ratings, savedDate));
+                            /*feedbackGridView.Rows[index].Cells[j].Value = rows[i][j];*/
+                            feedbackGridView.DataSource = myList;
                         }
                     }
 

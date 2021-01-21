@@ -11,23 +11,16 @@ namespace FeedbackSystem
         private string customerName;
         private string phoneNumber;
         private string emailAddress;
-        private string foodQuality;
-        private string staffFriendliness;
-        private string cleanliness;
-        private string orderAccuracy;
-        private string ambiance;
-        private string valueForMoney;
+        private string[] ratings;
+        private string savedDate;
 
-        public Rating(string customerName, string phoneNumber, string emailAddress, string foodQuality, string staffFriendliness, string cleanliness, string orderAccuracy, string ambiance, string valueForMoney) {
+        public Rating(string customerName, string phoneNumber, string emailAddress, string[] ratings, string savedDate)
+        {
             this.customerName = customerName;
             this.phoneNumber = phoneNumber;
             this.emailAddress = emailAddress;
-            this.foodQuality = foodQuality;
-            this.staffFriendliness = staffFriendliness;
-            this.cleanliness = cleanliness;
-            this.orderAccuracy = orderAccuracy;
-            this.ambiance = ambiance;
-            this.valueForMoney = valueForMoney;
+            this.ratings = ratings;
+            this.savedDate = savedDate;
         }
         public string CustomerName
         {
@@ -42,33 +35,15 @@ namespace FeedbackSystem
             get { return emailAddress; }
         }
 
-        public string FoodQuality
+        public string[] Ratings
         {
-            get { return foodQuality; }
+            get { return ratings; }
         }
 
-        public string StaffFriendliness
+        public string SavedDate
         {
-            get { return staffFriendliness; }
+            get { return savedDate; }
         }
-        public string Cleanliness
-        {
-            get { return cleanliness; }
-        }
-        public string OrderAccuracy
-        {
-            get { return orderAccuracy; }
-        }
-        public string Ambiance
-        {
-            get { return ambiance; }
-        }
-
-        public string ValueForMoney
-        {
-            get { return valueForMoney; }
-        }
-
 
     }
 }

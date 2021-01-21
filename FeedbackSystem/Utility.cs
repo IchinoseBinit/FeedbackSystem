@@ -30,7 +30,6 @@ namespace FeedbackSystem
             string fileName = path + "\\file1.csv";
             /*string clientHeader = "Customer Name" + "," + "Phone Number" + "," + "Email Address" + "," ;*/
             string clientHeader = "";
-            Console.WriteLine(arr);
             for (int i=0; i<arr.Length; i++)
             {
                 if (i == arr.Length - 1)
@@ -47,10 +46,22 @@ namespace FeedbackSystem
             Console.WriteLine("Written");
         }
 
-        public static void WriteToFile(string path, string clientDetails)
+        public static void WriteToFile(string path, string[] arr)
         {
             string fileName = path + "\\file1.csv";
-            File.AppendAllText(fileName, clientDetails);
+            string clientDeatils = "";
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (i == arr.Length - 1)
+                {
+                    clientDeatils = clientDeatils + arr[i] + "\n";
+                }
+                else
+                {
+                    clientDeatils = clientDeatils + arr[i] + ",";
+                }
+            }
+            File.AppendAllText(fileName, clientDeatils);
         }
     }
 }

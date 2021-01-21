@@ -118,9 +118,9 @@ namespace FeedbackSystem
             // 
             // userControlCriteria2
             // 
-            this.userControlCriteria2.Location = new System.Drawing.Point(0, -43);
+            this.userControlCriteria2.Location = new System.Drawing.Point(0, -56);
             this.userControlCriteria2.Name = "userControlCriteria2";
-            this.userControlCriteria2.Size = new System.Drawing.Size(824, 497);
+            this.userControlCriteria2.Size = new System.Drawing.Size(824, 486);
             this.userControlCriteria2.TabIndex = 0;
             // 
             // userControlCriteria1
