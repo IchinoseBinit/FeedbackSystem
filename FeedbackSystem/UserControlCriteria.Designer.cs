@@ -41,7 +41,7 @@ namespace FeedbackSystem
             // 
             this.criteriaGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.criteriaGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.criteriaGridView.Location = new System.Drawing.Point(533, 67);
+            this.criteriaGridView.Location = new System.Drawing.Point(896, 69);
             this.criteriaGridView.Name = "criteriaGridView";
             this.criteriaGridView.RowHeadersWidth = 51;
             this.criteriaGridView.RowTemplate.Height = 24;
@@ -53,7 +53,7 @@ namespace FeedbackSystem
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(264, 379);
+            this.btnAdd.Location = new System.Drawing.Point(352, 379);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(91, 38);
             this.btnAdd.TabIndex = 1;
@@ -67,7 +67,7 @@ namespace FeedbackSystem
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(704, 379);
+            this.btnDelete.Location = new System.Drawing.Point(1067, 379);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(91, 38);
             this.btnDelete.TabIndex = 2;
@@ -77,7 +77,7 @@ namespace FeedbackSystem
             // 
             // txtCriteriaName
             // 
-            this.txtCriteriaName.Location = new System.Drawing.Point(198, 88);
+            this.txtCriteriaName.Location = new System.Drawing.Point(294, 88);
             this.txtCriteriaName.Name = "txtCriteriaName";
             this.txtCriteriaName.Size = new System.Drawing.Size(211, 22);
             this.txtCriteriaName.TabIndex = 3;
@@ -86,7 +86,7 @@ namespace FeedbackSystem
             // 
             this.lblCriteriaName.AutoSize = true;
             this.lblCriteriaName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCriteriaName.Location = new System.Drawing.Point(41, 88);
+            this.lblCriteriaName.Location = new System.Drawing.Point(108, 88);
             this.lblCriteriaName.Name = "lblCriteriaName";
             this.lblCriteriaName.Size = new System.Drawing.Size(118, 20);
             this.lblCriteriaName.TabIndex = 4;
@@ -103,7 +103,7 @@ namespace FeedbackSystem
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.criteriaGridView);
             this.Name = "UserControlCriteria";
-            this.Size = new System.Drawing.Size(824, 454);
+            this.Size = new System.Drawing.Size(1256, 451);
             ((System.ComponentModel.ISupportInitialize)(this.criteriaGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

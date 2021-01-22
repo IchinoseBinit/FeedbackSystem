@@ -36,9 +36,9 @@ namespace FeedbackSystem
             this.btnSort = new System.Windows.Forms.Button();
             this.comboBoxSort = new System.Windows.Forms.ComboBox();
             this.btnImport = new System.Windows.Forms.Button();
-            this.feedbackGridView = new System.Windows.Forms.DataGridView();
+            feedbackGridView = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.feedbackGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(feedbackGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -50,11 +50,10 @@ namespace FeedbackSystem
             this.panel1.Controls.Add(this.btnSort);
             this.panel1.Controls.Add(this.comboBoxSort);
             this.panel1.Controls.Add(this.btnImport);
-            this.panel1.Controls.Add(this.feedbackGridView);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Controls.Add(feedbackGridView);
+            this.panel1.Location = new System.Drawing.Point(0, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(824, 454);
+            this.panel1.Size = new System.Drawing.Size(1256, 451);
             this.panel1.TabIndex = 0;
             // 
             // lblReviewsCount
@@ -83,7 +82,7 @@ namespace FeedbackSystem
             // 
             this.lblSelectCriteria.AutoSize = true;
             this.lblSelectCriteria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectCriteria.Location = new System.Drawing.Point(323, 89);
+            this.lblSelectCriteria.Location = new System.Drawing.Point(727, 98);
             this.lblSelectCriteria.Name = "lblSelectCriteria";
             this.lblSelectCriteria.Size = new System.Drawing.Size(135, 20);
             this.lblSelectCriteria.TabIndex = 4;
@@ -93,7 +92,7 @@ namespace FeedbackSystem
             // 
             this.btnSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSort.Location = new System.Drawing.Point(696, 76);
+            this.btnSort.Location = new System.Drawing.Point(1129, 85);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(102, 41);
             this.btnSort.TabIndex = 3;
@@ -104,7 +103,7 @@ namespace FeedbackSystem
             // comboBoxSort
             // 
             this.comboBoxSort.FormattingEnabled = true;
-            this.comboBoxSort.Location = new System.Drawing.Point(494, 85);
+            this.comboBoxSort.Location = new System.Drawing.Point(907, 94);
             this.comboBoxSort.Name = "comboBoxSort";
             this.comboBoxSort.Size = new System.Drawing.Size(149, 24);
             this.comboBoxSort.TabIndex = 2;
@@ -113,7 +112,7 @@ namespace FeedbackSystem
             // 
             this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImport.Location = new System.Drawing.Point(696, 394);
+            this.btnImport.Location = new System.Drawing.Point(1129, 394);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(102, 41);
             this.btnImport.TabIndex = 1;
@@ -123,17 +122,17 @@ namespace FeedbackSystem
             // 
             // feedbackGridView
             // 
-            this.feedbackGridView.AllowUserToAddRows = false;
-            this.feedbackGridView.AllowUserToDeleteRows = false;
-            this.feedbackGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.feedbackGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.feedbackGridView.Location = new System.Drawing.Point(20, 143);
-            this.feedbackGridView.Name = "feedbackGridView";
-            this.feedbackGridView.ReadOnly = true;
-            this.feedbackGridView.RowHeadersWidth = 51;
-            this.feedbackGridView.RowTemplate.Height = 24;
-            this.feedbackGridView.Size = new System.Drawing.Size(778, 226);
-            this.feedbackGridView.TabIndex = 0;
+            feedbackGridView.AllowUserToAddRows = false;
+            feedbackGridView.AllowUserToDeleteRows = false;
+            feedbackGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            feedbackGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            feedbackGridView.Location = new System.Drawing.Point(20, 143);
+            feedbackGridView.Name = "feedbackGridView";
+            feedbackGridView.ReadOnly = true;
+            feedbackGridView.RowHeadersWidth = 51;
+            feedbackGridView.RowTemplate.Height = 24;
+            feedbackGridView.Size = new System.Drawing.Size(1211, 226);
+            feedbackGridView.TabIndex = 0;
             // 
             // UserControlExcel
             // 
@@ -141,10 +140,10 @@ namespace FeedbackSystem
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "UserControlExcel";
-            this.Size = new System.Drawing.Size(824, 454);
+            this.Size = new System.Drawing.Size(1259, 454);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.feedbackGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(feedbackGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -156,8 +155,8 @@ namespace FeedbackSystem
         private System.Windows.Forms.Button btnSort;
         private System.Windows.Forms.ComboBox comboBoxSort;
         private System.Windows.Forms.Label lblSelectCriteria;
-        public System.Windows.Forms.DataGridView feedbackGridView;
         private System.Windows.Forms.Label lblNoOfCount;
         private System.Windows.Forms.Label lblReviewsCount;
+        public static System.Windows.Forms.DataGridView feedbackGridView;
     }
 }

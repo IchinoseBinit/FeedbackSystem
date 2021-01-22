@@ -112,6 +112,7 @@ namespace FeedbackSystem
 
         /*
          * This method clears the text boxes and the combo boxes.
+         * It also clears the ratings list.
          */
         private void Clear()
         {
@@ -122,6 +123,7 @@ namespace FeedbackSystem
             {
                 cmb.SelectedIndex=0;
             }
+            ratings.Clear();
         }
 
         /*

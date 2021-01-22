@@ -41,9 +41,9 @@ namespace FeedbackSystem
             // panel1
             // 
             this.panel1.Controls.Add(this.chartFeedback);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1023, 380);
+            this.panel1.Size = new System.Drawing.Size(1256, 451);
             this.panel1.TabIndex = 0;
             // 
             // chartFeedback
@@ -52,13 +52,13 @@ namespace FeedbackSystem
             this.chartFeedback.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartFeedback.Legends.Add(legend1);
-            this.chartFeedback.Location = new System.Drawing.Point(36, 56);
+            this.chartFeedback.Location = new System.Drawing.Point(36, 42);
             this.chartFeedback.Name = "chartFeedback";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "Points";
             this.chartFeedback.Series.Add(series1);
-            this.chartFeedback.Size = new System.Drawing.Size(672, 300);
+            this.chartFeedback.Size = new System.Drawing.Size(1187, 356);
             this.chartFeedback.TabIndex = 0;
             this.chartFeedback.Text = "chartFeedback";
             // 
@@ -68,7 +68,7 @@ namespace FeedbackSystem
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "UserControlChart";
-            this.Size = new System.Drawing.Size(850, 380);
+            this.Size = new System.Drawing.Size(1256, 451);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartFeedback)).EndInit();
             this.ResumeLayout(false);

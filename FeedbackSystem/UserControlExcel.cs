@@ -88,8 +88,14 @@ namespace FeedbackSystem
                                 comboBoxSort.Items.Add(rows[i][j]);
                             }
                             feedbackGridView.Columns[j].Name = rows[i][j];
-                            feedbackGridView.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+                            if (feedbackGridView.Columns.Count < 9)
+                            {
+                                feedbackGridView.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                            }
+                            else
+                            {
+                                feedbackGridView.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                            }
                         }
                         else
                         {
@@ -163,13 +169,16 @@ namespace FeedbackSystem
                 string[] temp;
                 int count = compareList.Count;
 
-                for (int i=1; i< compareList.Count -1 ; i++)
+                for (int i=1; i< compareList.Count-1 ; i++)
                 {
-                    if (Int32.Parse(compareList[i][index]) > Int32.Parse(compareList[i+1][index]))
+                    for (int j = i + 1; j < compareList.Count; j++)
                     {
-                        temp = compareList[i];
-                        compareList[i] = compareList[i + 1];
-                        compareList[i + 1] = temp;
+                        if (Int32.Parse(compareList[i][index]) > Int32.Parse(compareList[j][index]))
+                        {
+                            temp = compareList[i];
+                            compareList[i] = compareList[j];
+                            compareList[j] = temp;
+                        }
                     }
                 }
                 int length = rows[0].Length;
@@ -197,11 +206,18 @@ namespace FeedbackSystem
                         if (i == 0)
                         {
                             feedbackGridView.Columns[j].Name = rows[i][j];
-                            feedbackGridView.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                         }
                         else
                         {                            
                             feedbackGridView.Rows[rowCount].Cells[j].Value = compareList[i][j];
+                        }
+                        if (feedbackGridView.Columns.Count < 9)
+                        {
+                            feedbackGridView.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                        }
+                        else
+                        {
+                            feedbackGridView.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                         }
                     }
                 }

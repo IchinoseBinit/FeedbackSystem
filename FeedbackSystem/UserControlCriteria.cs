@@ -50,9 +50,9 @@ namespace FeedbackSystem
          */
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (newCriteriaNames.Count-4 > 8)
+            if (newCriteriaNames.Count-4 > 7)
             {
-                MessageBox.Show("Cannot Add more than 8 criterias", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot Add more than 7 criterias", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnDelete.Focus();
                 return;
             }

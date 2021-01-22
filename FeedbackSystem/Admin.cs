@@ -31,18 +31,19 @@ namespace FeedbackSystem
          */
         private void btnChart_Click(object sender, EventArgs e)
         {
-            
-            /*if (UserControlExcel.feedbackGridView.Rows.Count != 0)
+
+            if (UserControlExcel.feedbackGridView.Rows.Count != 0)
             {
                 userControlExcel.Visible = false;
                 userControlCriteria.Visible = false;
+                userControlChart.LoadChart();
                 userControlChart.Visible = true;
             }
             else
             {
                 MessageBox.Show("Please import a file before Sorting", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }*/
+            }
         }
 
         /*
