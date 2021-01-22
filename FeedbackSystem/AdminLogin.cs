@@ -17,10 +17,30 @@ namespace FeedbackSystem
             InitializeComponent();
         }
 
+        /*
+         * This method checks the validation for Login Screen.
+         * If the conditions are matched, user is redirected to the admin panel.
+         */
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            (new Admin()).Show();
-            this.Hide();
+            if(txtUsername.Text != "" && txtPassword.Text != "")
+            {
+                if(txtUsername.Text == "admin" && txtPassword.Text == "pass")
+                {
+                    (new Admin()).Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Credentials\nPlease Enter Correct Credentials", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtUsername.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Enter your Credentials", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsername.Focus();
+            }
         }
     }
 }

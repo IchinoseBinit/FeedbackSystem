@@ -39,6 +39,7 @@ namespace FeedbackSystem
             // 
             // criteriaGridView
             // 
+            this.criteriaGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.criteriaGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.criteriaGridView.Location = new System.Drawing.Point(533, 67);
             this.criteriaGridView.Name = "criteriaGridView";
@@ -49,27 +50,34 @@ namespace FeedbackSystem
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(198, 379);
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(264, 379);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(91, 38);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.BackColor = System.Drawing.Color.Red;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Location = new System.Drawing.Point(704, 379);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(91, 38);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtCriteriaName
             // 
-            this.txtCriteriaName.Location = new System.Drawing.Point(159, 83);
+            this.txtCriteriaName.Location = new System.Drawing.Point(198, 88);
             this.txtCriteriaName.Name = "txtCriteriaName";
             this.txtCriteriaName.Size = new System.Drawing.Size(211, 22);
             this.txtCriteriaName.TabIndex = 3;
@@ -77,16 +85,18 @@ namespace FeedbackSystem
             // lblCriteriaName
             // 
             this.lblCriteriaName.AutoSize = true;
+            this.lblCriteriaName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCriteriaName.Location = new System.Drawing.Point(41, 88);
             this.lblCriteriaName.Name = "lblCriteriaName";
-            this.lblCriteriaName.Size = new System.Drawing.Size(94, 17);
+            this.lblCriteriaName.Size = new System.Drawing.Size(118, 20);
             this.lblCriteriaName.TabIndex = 4;
-            this.lblCriteriaName.Text = "Criteria Name";
+            this.lblCriteriaName.Text = "Criteria Name:";
             // 
             // UserControlCriteria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.lblCriteriaName);
             this.Controls.Add(this.txtCriteriaName);
             this.Controls.Add(this.btnDelete);

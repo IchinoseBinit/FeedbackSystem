@@ -15,6 +15,7 @@ namespace FeedbackSystem
     public partial class UserControlExcel : UserControl
     {
         private List<Rating> myList = new List<Rating>();
+        public static List<string[]> rows;
         public UserControlExcel()
         {
             InitializeComponent();
@@ -22,28 +23,44 @@ namespace FeedbackSystem
         /// <summary>
         /// 
         /// </summary>
-        private void loadExcel()
+        /// 
+
+        /*
+        * This method clears all the values in DataGridView.
+        */
+        public void ClearDataGridView()
+        {
+            feedbackGridView.Rows.Clear();
+            feedbackGridView.Columns.Clear();
+        }
+
+        /*
+         * This method loads the value of the CSV file to the DataGridView.
+         * The file is selected using the OpenFileDialog.
+         * Then, the file is loaded into a generic list of string array.
+         * The DataGridView loads the value from the list using the for loop.
+         * Then the count of the review is calculated and displayed in the label.
+         */
+        private void LoadExcel()
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "CSVFiles|*.csv";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 /**//*String name = "file1";*/
-                string file = Application.StartupPath + openFileDialog1.FileName;
+                ClearDataGridView();
+                string file = openFileDialog1.FileName;
                 string csvFile = Path.Combine(Application.StartupPath + "//file1.csv");
-                List<string[]> rows = File.ReadAllLines(csvFile).Select(x => x.Split(',')).ToList();
+                rows = File.ReadAllLines(file).Select(x => x.Split(',')).ToList();
 
-                //create a new function with following code
                 int length = rows[0].Length;
+
                 DataGridViewTextBoxColumn[] newGridViewList = new DataGridViewTextBoxColumn[length];
                 for (int i = 0; i < rows[0].Length; i++)
                 {
                     newGridViewList[i] = new DataGridViewTextBoxColumn();
                 }
 
-
-                //Datagridview table object name => employeeRecordTable
-                //creating by adding datagridview in your UI form.
                 foreach (DataGridViewTextBoxColumn x in newGridViewList)
                 {
                     feedbackGridView.Columns.Add(x);
@@ -56,78 +73,182 @@ namespace FeedbackSystem
                     {
                         index = feedbackGridView.Rows.Add();
                     }
+                    string customerName = "";
+                    string phoneNumber = "";
+                    string emailAddress = "";
+                    List<string> ratings = new List<string>();
+                    string savedDate = "";
+
+                    for (int j = 0; j < feedbackGridView.Columns.Count; j++)
+                    {
+                        if (i == 0)
+                        {
+                            if (j > 3 && j < feedbackGridView.Columns.Count)
+                            {
+                                comboBoxSort.Items.Add(rows[i][j]);
+                            }
+                            feedbackGridView.Columns[j].Name = rows[i][j];
+                            feedbackGridView.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                        }
+                        else
+                        {
+                            if (j == 0)
+                            {
+                                customerName = rows[i][j];
+                                feedbackGridView.Rows[index].Cells[j].Value = customerName;
+                            }
+                            else if (j == 1)
+                            {
+                                phoneNumber = rows[i][j];
+                                feedbackGridView.Rows[index].Cells[j].Value = phoneNumber;
+                            }
+                            else if (j == 2)
+                            {
+                                emailAddress = rows[i][j];
+                                feedbackGridView.Rows[index].Cells[j].Value = emailAddress;
+                            }
+                            else if(j == 3)
+                            {
+                                savedDate = rows[i][j];
+                                feedbackGridView.Rows[index].Cells[j].Value = savedDate;
+                            }
+                            else if (j > 3 && j < feedbackGridView.Columns.Count )
+                            {
+                                string rate = rows[i][j];
+                                try
+                                {
+                                    int a = Int32.Parse(rate);
+                                    feedbackGridView.Rows[index].Cells[j].Value = a;
+                                    ratings.Add(rate);
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Cant Read the file, Ratings should be in between 1 to 5", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    ClearDataGridView();
+                                    lblNoOfCount.Visible = false;
+                                    lblReviewsCount.Visible = false;
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    lblReviewsCount.Text = feedbackGridView.Rows.Count.ToString();
+                    lblNoOfCount.Visible = true;
+                    lblReviewsCount.Visible = true;
+                    comboBoxSort.DropDownStyle = ComboBoxStyle.DropDownList;
+                }
+            }
+        }
+
+        /*
+         * This method calls the LoadExcel.
+         */
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            LoadExcel();
+        }
+
+        /*
+         * This method sorts the DataGridView according to the column value.
+         * The sorted values are displayed in the DataGridView.
+         * The method takes a generic list of string array and a index of the column.
+         * The ClearDataGridView method is called to clear the DataGridView.
+         * After the list is sorted, for loop is used to enter the value in the DataGridView.
+         */
+        private void Sort(List<string[]> compareList, int index)
+        {
+            {
+                ClearDataGridView();
+                string[] temp;
+                int count = compareList.Count;
+
+                for (int i=1; i< compareList.Count -1 ; i++)
+                {
+                    if (Int32.Parse(compareList[i][index]) > Int32.Parse(compareList[i+1][index]))
+                    {
+                        temp = compareList[i];
+                        compareList[i] = compareList[i + 1];
+                        compareList[i + 1] = temp;
+                    }
+                }
+                int length = rows[0].Length;
+
+                DataGridViewTextBoxColumn[] newGridViewList = new DataGridViewTextBoxColumn[length];
+                for (int i = 0; i < rows[0].Length; i++)
+                {
+                    newGridViewList[i] = new DataGridViewTextBoxColumn();
+                }
+
+                foreach (DataGridViewTextBoxColumn x in newGridViewList)
+                {
+                    feedbackGridView.Columns.Add(x);
+                }
+                int rowCount = 0;
+                for (int i = 0; i < rows.Count; i++)
+                {                    
+                    if (i > 0)
+                    {
+                        rowCount = feedbackGridView.Rows.Add();
+                    }
+
                     for (int j = 0; j < feedbackGridView.Columns.Count; j++)
                     {
                         if (i == 0)
                         {
                             feedbackGridView.Columns[j].Name = rows[i][j];
+                            feedbackGridView.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                         }
                         else
-                        {
-                            string customerName = "";
-                            string phoneNumber = "";
-                            string emailAddress = "";
-                            string[] ratings = new string[feedbackGridView.Columns.Count];
-                            string savedDate = "";
-                            if (j == 0)
-                            {
-                                customerName = rows[i][j];
-                            }
-                            else if (j == 1)
-                            {
-                                phoneNumber = rows[i][j];
-                            }
-                            else if (j == 2)
-                            {
-                                emailAddress = rows[i][j];
-                            }
-                            else if (j > 2 && j < feedbackGridView.Columns.Count-1)
-                            {
-                                ratings.Append(rows[i][j]);
-                            }
-                            else
-                            {
-                                savedDate = rows[i][j];
-                            }
-                            myList.Add(new Rating(customerName, phoneNumber, emailAddress, ratings, savedDate));
-                            /*feedbackGridView.Rows[index].Cells[j].Value = rows[i][j];*/
-                            feedbackGridView.DataSource = myList;
+                        {                            
+                            feedbackGridView.Rows[rowCount].Cells[j].Value = compareList[i][j];
                         }
                     }
-
                 }
-                rows.ForEach(x =>
-                {
-                    //add value to getter/setter method before adding to datagridview row;
-                    //SerializationClass abc = new SerializationClass(id, name, address, contact, email);
-
-                    //now add the value to datagridview => employeeRecordTable.
-                });
             }
-            /* OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "CSVFiles|*.csv";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-             * 
-             * String name = "file1";
-            string file = Application.StartupPath + "\\file1.csv";
-            String pathToFile = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = " + file + ";Extended Properties = \"text;HDR=Yes;FMT=Delimited\"";
-
-            OleDbConnection con = new OleDbConnection(pathToFile);
-            OleDbCommand oconn = new OleDbCommand("Select * From [" + name + "$]", con);
-            con.Open();
-
-            OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
-            DataTable data = new DataTable();
-            sda.Fill(data);
-            dataGridView1.DataSource = data; */
+        
         }
 
-        private void btnImport_Click(object sender, EventArgs e)
+        /*
+         * This method calls the Sort method with list and index of the column.
+         * It checks whether there is value in the DataGridView.
+         * If the value is present, it calls the Sort method.
+         * If the value is not present, it prompts the user to Import a CSV file.
+         */
+        private void btnSort_Click(object sender, EventArgs e)
         {
-            loadExcel();
+            if(comboBoxSort.Items.Count != 0)
+            {
+                if (comboBoxSort.SelectedItem != null)
+                {
+                    string criteria = comboBoxSort.SelectedItem.ToString();
+                    int colId = 0;
+                    for (int j = 0; j < feedbackGridView.Columns.Count; j++)
+                    {
+                        if (feedbackGridView.Columns[j].Name == criteria)
+                        {
+                            colId = j;
+                            break;
+                        }
+                    }
+                    Sort(rows, colId);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a criteria to sort", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    comboBoxSort.Focus();
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please import a csv file", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnImport.Focus();
+                return;
+            }
+            
         }
     }
 
-    
-}
+    }
+

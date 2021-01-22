@@ -13,3 +13,4 @@ C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSyst
 C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.UserControlExcel.resources
 C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.UserControlChart.resources
 C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.UserControlCriteria.resources
+C:\Users\cenat\source\repos\FeedbackSystem\FeedbackSystem\obj\Debug\FeedbackSystem.csprojAssemblyReference.cache

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace FeedbackSystem
 {
+    /*
+    * This class is created for serialization
+    * The class has the necessary attributes required for the program.
+    */
     class Rating
     {
         private string customerName;
@@ -14,6 +18,9 @@ namespace FeedbackSystem
         private string[] ratings;
         private string savedDate;
 
+        /*
+         * Constructor takes all the value and initializes every attributes
+         */
         public Rating(string customerName, string phoneNumber, string emailAddress, string[] ratings, string savedDate)
         {
             this.customerName = customerName;
@@ -22,6 +29,9 @@ namespace FeedbackSystem
             this.ratings = ratings;
             this.savedDate = savedDate;
         }
+        /*
+         * Getter method is created to return the values of the private attributes
+         */
         public string CustomerName
         {
             get { return customerName; }
