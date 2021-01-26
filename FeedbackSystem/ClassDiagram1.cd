@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FeedbackSystem.Admin">
+    <Position X="1.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQIAIBAAAiAgAAAAgACEIQICQgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FeedbackSystem.AdminLogin">
+    <Position X="3.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAACAAAAAAAACAAAACAAEACAAABhAAAABAAAA=</HashCode>
+      <FileName>AdminLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FeedbackSystem.GuestForm">
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAQAAACACEAAAIAKAIIICAEAAAMFCAAAABEBCAAQ=</HashCode>
+      <FileName>GuestForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FeedbackSystem.Home">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAABQAIAACAAAACAAAAAAAEAAAASAAAAAA=</HashCode>
+      <FileName>Home.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FeedbackSystem.Rating">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAQAIEQEAABEACAAAAAgAAAAA=</HashCode>
+      <FileName>Rating.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FeedbackSystem.UserControlChart">
+    <Position X="11" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAIAAACAAAAAAAACAAAACgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserControlChart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FeedbackSystem.UserControlCriteria">
+    <Position X="12.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQgAAACAAAAAAAADAAAACAAIAkAAAAEAAAAABAQ4=</HashCode>
+      <FileName>UserControlCriteria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FeedbackSystem.UserControlExcel">
+    <Position X="14.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAQBIAAAiAAAAAAAQDQIAACAAAABAAABBAAAACgAAA=</HashCode>
+      <FileName>UserControlExcel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FeedbackSystem.Utility">
+    <Position X="16.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAEAAAAAAAAEAAAAAAgAAAA=</HashCode>
+      <FileName>Utility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

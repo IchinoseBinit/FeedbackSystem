@@ -32,19 +32,19 @@ namespace FeedbackSystem
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelChart = new System.Windows.Forms.Panel();
             this.chartFeedback = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.panel1.SuspendLayout();
+            this.panelChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartFeedback)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelChart
             // 
-            this.panel1.Controls.Add(this.chartFeedback);
-            this.panel1.Location = new System.Drawing.Point(0, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1256, 451);
-            this.panel1.TabIndex = 0;
+            this.panelChart.Controls.Add(this.chartFeedback);
+            this.panelChart.Location = new System.Drawing.Point(0, 3);
+            this.panelChart.Name = "panelChart";
+            this.panelChart.Size = new System.Drawing.Size(1256, 451);
+            this.panelChart.TabIndex = 0;
             // 
             // chartFeedback
             // 
@@ -66,10 +66,10 @@ namespace FeedbackSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelChart);
             this.Name = "UserControlChart";
             this.Size = new System.Drawing.Size(1256, 451);
-            this.panel1.ResumeLayout(false);
+            this.panelChart.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartFeedback)).EndInit();
             this.ResumeLayout(false);
 
@@ -77,7 +77,7 @@ namespace FeedbackSystem
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartFeedback;
     }
 }

@@ -14,7 +14,6 @@ namespace FeedbackSystem
 {
     public partial class UserControlExcel : UserControl
     {
-        private List<Rating> myList = new List<Rating>();
         public static List<string[]> rows;
         public UserControlExcel()
         {
@@ -43,107 +42,115 @@ namespace FeedbackSystem
          */
         private void LoadExcel()
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "CSVFiles|*.csv";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                /**//*String name = "file1";*/
-                ClearDataGridView();
-                string file = openFileDialog1.FileName;
-                string csvFile = Path.Combine(Application.StartupPath + "//file1.csv");
-                rows = File.ReadAllLines(file).Select(x => x.Split(',')).ToList();
-
-                int length = rows[0].Length;
-
-                DataGridViewTextBoxColumn[] newGridViewList = new DataGridViewTextBoxColumn[length];
-                for (int i = 0; i < rows[0].Length; i++)
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Filter = "CSVFiles|*.csv";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    newGridViewList[i] = new DataGridViewTextBoxColumn();
-                }
+                    /**//*String name = "file1";*/
+                    ClearDataGridView();
+                    string file = openFileDialog1.FileName;
+                    string csvFile = Path.Combine(Application.StartupPath + "//file1.csv");
+                    rows = File.ReadAllLines(file).Select(x => x.Split(',')).ToList();
 
-                foreach (DataGridViewTextBoxColumn x in newGridViewList)
-                {
-                    feedbackGridView.Columns.Add(x);
-                }
+                    int length = rows[0].Length;
 
-                for (int i = 0; i < rows.Count; i++)
-                {
-                    int index = 0;
-                    if (i > 0)
+                    DataGridViewTextBoxColumn[] newGridViewList = new DataGridViewTextBoxColumn[length];
+                    for (int i = 0; i < rows[0].Length; i++)
                     {
-                        index = feedbackGridView.Rows.Add();
+                        newGridViewList[i] = new DataGridViewTextBoxColumn();
                     }
-                    string customerName = "";
-                    string phoneNumber = "";
-                    string emailAddress = "";
-                    List<string> ratings = new List<string>();
-                    string savedDate = "";
 
-                    for (int j = 0; j < feedbackGridView.Columns.Count; j++)
+                    foreach (DataGridViewTextBoxColumn x in newGridViewList)
                     {
-                        if (i == 0)
+                        feedbackGridView.Columns.Add(x);
+                    }
+
+                    for (int i = 0; i < rows.Count; i++)
+                    {
+                        int index = 0;
+                        if (i > 0)
                         {
-                            if (j > 3 && j < feedbackGridView.Columns.Count)
+                            index = feedbackGridView.Rows.Add();
+                        }
+                        string customerName = "";
+                        string phoneNumber = "";
+                        string emailAddress = "";
+                        List<string> ratings = new List<string>();
+                        string savedDate = "";
+
+                        for (int j = 0; j < feedbackGridView.Columns.Count; j++)
+                        {
+                            if (i == 0)
                             {
-                                comboBoxSort.Items.Add(rows[i][j]);
-                            }
-                            feedbackGridView.Columns[j].Name = rows[i][j];
-                            if (feedbackGridView.Columns.Count < 9)
-                            {
-                                feedbackGridView.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                if (j > 3 && j < feedbackGridView.Columns.Count)
+                                {
+                                    comboBoxSort.Items.Add(rows[i][j]);
+                                }
+                                feedbackGridView.Columns[j].Name = rows[i][j];
+                                if (feedbackGridView.Columns.Count < 9)
+                                {
+                                    feedbackGridView.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                }
+                                else
+                                {
+                                    feedbackGridView.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                                }
                             }
                             else
                             {
-                                feedbackGridView.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                            }
-                        }
-                        else
-                        {
-                            if (j == 0)
-                            {
-                                customerName = rows[i][j];
-                                feedbackGridView.Rows[index].Cells[j].Value = customerName;
-                            }
-                            else if (j == 1)
-                            {
-                                phoneNumber = rows[i][j];
-                                feedbackGridView.Rows[index].Cells[j].Value = phoneNumber;
-                            }
-                            else if (j == 2)
-                            {
-                                emailAddress = rows[i][j];
-                                feedbackGridView.Rows[index].Cells[j].Value = emailAddress;
-                            }
-                            else if(j == 3)
-                            {
-                                savedDate = rows[i][j];
-                                feedbackGridView.Rows[index].Cells[j].Value = savedDate;
-                            }
-                            else if (j > 3 && j < feedbackGridView.Columns.Count )
-                            {
-                                string rate = rows[i][j];
-                                try
+                                if (j == 0)
                                 {
-                                    int a = Int32.Parse(rate);
-                                    feedbackGridView.Rows[index].Cells[j].Value = a;
-                                    ratings.Add(rate);
+                                    customerName = rows[i][j];
+                                    feedbackGridView.Rows[index].Cells[j].Value = customerName;
                                 }
-                                catch (Exception ex)
+                                else if (j == 1)
                                 {
-                                    MessageBox.Show("Cant Read the file, Ratings should be in between 1 to 5", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    ClearDataGridView();
-                                    lblNoOfCount.Visible = false;
-                                    lblReviewsCount.Visible = false;
-                                    return;
+                                    phoneNumber = rows[i][j];
+                                    feedbackGridView.Rows[index].Cells[j].Value = phoneNumber;
+                                }
+                                else if (j == 2)
+                                {
+                                    emailAddress = rows[i][j];
+                                    feedbackGridView.Rows[index].Cells[j].Value = emailAddress;
+                                }
+                                else if (j == 3)
+                                {
+                                    savedDate = rows[i][j];
+                                    feedbackGridView.Rows[index].Cells[j].Value = savedDate;
+                                }
+                                else if (j > 3 && j < feedbackGridView.Columns.Count)
+                                {
+                                    string rate = rows[i][j];
+                                    try
+                                    {
+                                        int a = Int32.Parse(rate);
+                                        feedbackGridView.Rows[index].Cells[j].Value = a;
+                                        ratings.Add(rate);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("Cant Read the file, Ratings should be in between 1 to 5", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        ClearDataGridView();
+                                        lblNoOfCount.Visible = false;
+                                        lblReviewsCount.Visible = false;
+                                        return;
+                                    }
                                 }
                             }
                         }
+                        lblReviewsCount.Text = feedbackGridView.Rows.Count.ToString();
+                        lblNoOfCount.Visible = true;
+                        lblReviewsCount.Visible = true;
+                        comboBoxSort.DropDownStyle = ComboBoxStyle.DropDownList;
                     }
-                    lblReviewsCount.Text = feedbackGridView.Rows.Count.ToString();
-                    lblNoOfCount.Visible = true;
-                    lblReviewsCount.Visible = true;
-                    comboBoxSort.DropDownStyle = ComboBoxStyle.DropDownList;
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 

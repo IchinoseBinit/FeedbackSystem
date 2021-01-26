@@ -24,6 +24,7 @@ namespace FeedbackSystem
             InitializeComponent();
             ShowCriterias();
         }
+        private AdminLogin adminLogin = new AdminLogin();
         private string customerName;
         private string phoneNumber;
         private string emailAddress;
@@ -207,14 +208,14 @@ namespace FeedbackSystem
          */
         private void btnBack_Click(object sender, EventArgs e)
         {
-            (new AdminLogin()).Show();
+            adminLogin.Show();
             this.Hide();
         }
 
         /*
          * This method checks for all the validations by calling the CheckInformation method.
          * Then the object is created and file is written through serialization.
-         * After the file is written, a success message is shown and the Clear method is callled.
+         * After the file is written, a success message is shown and the Clear method is called.
          */
         private void btnSubmit_Click(object sender, EventArgs e)
         {

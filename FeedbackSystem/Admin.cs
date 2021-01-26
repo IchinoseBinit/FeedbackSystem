@@ -63,6 +63,7 @@ namespace FeedbackSystem
          */
         private void btnCriteria_Click(object sender, EventArgs e)
         {
+            userControlCriteria.LoadCriteriaNames();
             userControlCriteria.Visible = true;
             userControlExcel.Visible = false;
             userControlChart.Visible = false;

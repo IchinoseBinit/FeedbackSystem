@@ -12,6 +12,7 @@ namespace FeedbackSystem
 {
     public partial class AdminLogin : Form
     {
+        private Admin admin = new Admin();
         public AdminLogin()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace FeedbackSystem
             {
                 if(txtUsername.Text == "admin" && txtPassword.Text == "pass")
                 {
-                    (new Admin()).Show();
+                    admin.Show();
                     this.Hide();
                 }
                 else

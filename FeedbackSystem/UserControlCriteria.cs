@@ -24,6 +24,7 @@ namespace FeedbackSystem
         public UserControlCriteria()
         {
             InitializeComponent();
+            newCriteriaNames = rows[0].ToList();
             LoadCriteriaNames();
         }
 
@@ -32,7 +33,7 @@ namespace FeedbackSystem
          * If the criterias values are changed, the method returns true.
          * If the criterias values are unchanged, the method returns false.
          */
-        public static Boolean ShouldRewrite()
+        public static bool ShouldRewrite()
         {
             string[] newCriteriaArray = newCriteriaNames.ToArray();
             if (newCriteriaArray.SequenceEqual(rows[0]))
@@ -44,7 +45,7 @@ namespace FeedbackSystem
 
         /*
          * The method adds the criteria value to the list.
-         * If the criterias are less than 8, it allows the addition of criteria.
+         * If the criterias are less than 7, it allows the addition of criteria.
          * Validations are performed using Regex and if the validations are matched, the criteria is added to the list.
          * If the criteria value already matches with the value in list, the criteria is not added.
          */
@@ -78,6 +79,7 @@ namespace FeedbackSystem
                 index = criteriaGridView.Rows.Add();
                 criteriaGridView.Rows[index].Cells[0].Value = newCriteria;
                 newCriteriaNames.Add(newCriteria);
+                txtCriteriaName.Text = "";
             }
             else
             {
@@ -94,21 +96,30 @@ namespace FeedbackSystem
          */
         public void LoadCriteriaNames()
         {
-            newCriteriaNames = rows[0].ToList();
-            string[] criteriaNames = rows[0];
-            int length = criteriaNames.Length;
-
-            criteriaGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            criteriaGridView.Columns.Add(new DataGridViewTextBoxColumn());
-
-            criteriaGridView.Columns[0].Name = "Crtierias";
-            criteriaGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            int i = 0;
-            for (int j = 4; j < length-1; j++)
+            try
             {
-                index = criteriaGridView.Rows.Add();
-                criteriaGridView.Rows[i].Cells[0].Value = criteriaNames[j];
-                i++;
+                criteriaGridView.Rows.Clear();
+                criteriaGridView.Columns.Clear();
+                string[] criteriaNames = newCriteriaNames.ToArray();
+                int length = criteriaNames.Length;
+
+                criteriaGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                criteriaGridView.Columns.Add(new DataGridViewTextBoxColumn());
+
+                criteriaGridView.Columns[0].Name = "Crtierias";
+                criteriaGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                int i = 0;
+                for (int j = 4; j < length; j++)
+                {
+                    index = criteriaGridView.Rows.Add();
+                    criteriaGridView.Rows[i].Cells[0].Value = criteriaNames[j];
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -130,7 +141,7 @@ namespace FeedbackSystem
                 {
                     int rowId = criteriaGridView.SelectedRows[0].Index;
                     criteriaGridView.Rows.RemoveAt(rowId);
-                    newCriteriaNames.RemoveAt(rowId + 3);
+                    newCriteriaNames.RemoveAt(rowId + 4);
                 }
                 else
                 {

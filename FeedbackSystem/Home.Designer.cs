@@ -29,22 +29,22 @@ namespace FeedbackSystem
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblHeader = new System.Windows.Forms.Label();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.btnGuest = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblAdmin = new System.Windows.Forms.Label();
+            this.lblGuest = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lblHeader
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(84, 64);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(304, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Feedback/Rating System";
+            this.lblHeader.AutoSize = true;
+            this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader.Location = new System.Drawing.Point(84, 64);
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(304, 29);
+            this.lblHeader.TabIndex = 0;
+            this.lblHeader.Text = "Feedback/Rating System";
             // 
             // btnAdmin
             // 
@@ -57,7 +57,7 @@ namespace FeedbackSystem
             this.btnAdmin.TabIndex = 1;
             this.btnAdmin.Text = "Admin";
             this.btnAdmin.UseVisualStyleBackColor = false;
-            this.btnAdmin.Click += new System.EventHandler(this.button1_Click);
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // btnGuest
             // 
@@ -72,25 +72,25 @@ namespace FeedbackSystem
             this.btnGuest.UseVisualStyleBackColor = false;
             this.btnGuest.Click += new System.EventHandler(this.btnGuest_Click);
             // 
-            // label2
+            // lblAdmin
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(130, 139);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(244, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "To login as Admin, Press below";
+            this.lblAdmin.AutoSize = true;
+            this.lblAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdmin.Location = new System.Drawing.Point(130, 139);
+            this.lblAdmin.Name = "lblAdmin";
+            this.lblAdmin.Size = new System.Drawing.Size(244, 20);
+            this.lblAdmin.TabIndex = 3;
+            this.lblAdmin.Text = "To login as Admin, Press below";
             // 
-            // label3
+            // lblGuest
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(130, 258);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(242, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "To login as Guest, Press below";
+            this.lblGuest.AutoSize = true;
+            this.lblGuest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGuest.Location = new System.Drawing.Point(130, 258);
+            this.lblGuest.Name = "lblGuest";
+            this.lblGuest.Size = new System.Drawing.Size(242, 20);
+            this.lblGuest.TabIndex = 4;
+            this.lblGuest.Text = "To login as Guest, Press below";
             // 
             // Home
             // 
@@ -98,11 +98,11 @@ namespace FeedbackSystem
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(476, 436);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblGuest);
+            this.Controls.Add(this.lblAdmin);
             this.Controls.Add(this.btnGuest);
             this.Controls.Add(this.btnAdmin);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblHeader);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
@@ -113,10 +113,10 @@ namespace FeedbackSystem
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.Button btnGuest;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblAdmin;
+        private System.Windows.Forms.Label lblGuest;
     }
 }

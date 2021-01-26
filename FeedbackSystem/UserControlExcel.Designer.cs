@@ -29,7 +29,7 @@ namespace FeedbackSystem
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelControlExcel = new System.Windows.Forms.Panel();
             this.lblReviewsCount = new System.Windows.Forms.Label();
             this.lblNoOfCount = new System.Windows.Forms.Label();
             this.lblSelectCriteria = new System.Windows.Forms.Label();
@@ -37,24 +37,24 @@ namespace FeedbackSystem
             this.comboBoxSort = new System.Windows.Forms.ComboBox();
             this.btnImport = new System.Windows.Forms.Button();
             feedbackGridView = new System.Windows.Forms.DataGridView();
-            this.panel1.SuspendLayout();
+            this.panelControlExcel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(feedbackGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelControlExcel
             // 
-            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel1.Controls.Add(this.lblReviewsCount);
-            this.panel1.Controls.Add(this.lblNoOfCount);
-            this.panel1.Controls.Add(this.lblSelectCriteria);
-            this.panel1.Controls.Add(this.btnSort);
-            this.panel1.Controls.Add(this.comboBoxSort);
-            this.panel1.Controls.Add(this.btnImport);
-            this.panel1.Controls.Add(feedbackGridView);
-            this.panel1.Location = new System.Drawing.Point(0, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1256, 451);
-            this.panel1.TabIndex = 0;
+            this.panelControlExcel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelControlExcel.Controls.Add(this.lblReviewsCount);
+            this.panelControlExcel.Controls.Add(this.lblNoOfCount);
+            this.panelControlExcel.Controls.Add(this.lblSelectCriteria);
+            this.panelControlExcel.Controls.Add(this.btnSort);
+            this.panelControlExcel.Controls.Add(this.comboBoxSort);
+            this.panelControlExcel.Controls.Add(this.btnImport);
+            this.panelControlExcel.Controls.Add(feedbackGridView);
+            this.panelControlExcel.Location = new System.Drawing.Point(0, 3);
+            this.panelControlExcel.Name = "panelControlExcel";
+            this.panelControlExcel.Size = new System.Drawing.Size(1256, 451);
+            this.panelControlExcel.TabIndex = 0;
             // 
             // lblReviewsCount
             // 
@@ -138,11 +138,11 @@ namespace FeedbackSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelControlExcel);
             this.Name = "UserControlExcel";
             this.Size = new System.Drawing.Size(1259, 454);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelControlExcel.ResumeLayout(false);
+            this.panelControlExcel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(feedbackGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -150,7 +150,7 @@ namespace FeedbackSystem
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelControlExcel;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnSort;
         private System.Windows.Forms.ComboBox comboBoxSort;
